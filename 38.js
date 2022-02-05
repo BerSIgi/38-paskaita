@@ -19,29 +19,24 @@ const transliacija = `
 2 54    6    60 84  0   5    12      2  98 22 40     74 4
 `;
 
-const transliacijaBeNewLine = transliacija.replace('\n',' ');
+const transliacijaBeNewLine = transliacija.replaceAll('\n', ' ');
 const masyvasSuTarpais = transliacijaBeNewLine.split(' ');
-const svaresnisMasyvas = masyvoValytuvas(masyvasSuTarpais);
-
-const skaiciuMasyvas = [];
-
-for (let i = 0; i < svaresnisMasyvas.length; i++) {
-    const masyvas = svaresnisMasyvas[i].split('\n');
-    const isvalytasMasyvas = masyvoValytuvas(masyvas);
-  skaiciuMasyvas.push(isvalytasMasyvas[0]);
-}
+const skaiciuMasyvas = masyvoValytuvas(masyvasSuTarpais);
 
 console.log(skaiciuMasyvas);
 
-function masyvoValytuvas(masyvasKuriReikiaIsvalyti) {
-    const tikSkaiciai = [];
-    for (let i = 0; i < masyvasKuriReikiaIsvalyti.length; i++) {
-        if (masyvasKuriReikiaIsvalyti[i] === '') {
-        } else {
-            tikSkaiciai.push(masyvasKuriReikiaIsvalyti[i]);
-        }
+function masyvoValytuvas(masyvasKuriReikiaIsvalyt) {
+  const tikSkaiciai = [];
+
+  for (let i = 0; i < masyvasKuriReikiaIsvalyt.length; i++) {
+    if (masyvasKuriReikiaIsvalyt[i] === '') {
+      //nedarom nieko
+    } else {
+      tikSkaiciai.push(masyvasKuriReikiaIsvalyt[i]);
     }
-return tikSkaiciai;
+  }
+  const paskutiniai40Skaiciu = tikSkaiciai.slice(-40);
+  return paskutiniai40Skaiciu;
 }
 
 
